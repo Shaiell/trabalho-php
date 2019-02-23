@@ -1,0 +1,29 @@
+INSERT INTO estado (nome) VALUES ('Acre (AC)');
+INSERT INTO estado (nome) VALUES ('Alagoas (AL)');
+INSERT INTO estado (nome) VALUES ('Amapá (AP)');
+INSERT INTO estado (nome) VALUES ('Amazonas (AM)');
+INSERT INTO estado (nome) VALUES ('Bahia (BA)');
+INSERT INTO estado (nome) VALUES ('Ceará (CE)');
+INSERT INTO estado (nome) VALUES ('Distrito Federal (DF)');
+INSERT INTO estado (nome) VALUES ('Espírito Santo (ES)');
+INSERT INTO estado (nome) VALUES ('Goiás (GO)');
+INSERT INTO estado (nome) VALUES ('Maranhão (MA)');
+INSERT INTO estado (nome) VALUES ('Mato Grosso (MT)');
+INSERT INTO estado (nome) VALUES ('Mato Grosso do Sul (MS)');
+INSERT INTO estado (nome) VALUES ('Minas Gerais (MG)');
+INSERT INTO estado (nome) VALUES ('Pará (PA)');
+INSERT INTO estado (nome) VALUES ('Paraíba (PB)');
+INSERT INTO estado (nome) VALUES ('Paraná (PR)');
+INSERT INTO estado (nome) VALUES ('Pernambuco (PE)');
+INSERT INTO estado (nome) VALUES ('Piauí (PI)');
+INSERT INTO estado (nome) VALUES ('Rio de Janeiro (RJ)');
+INSERT INTO estado (nome) VALUES ('Rio Grande do Norte (RN)');
+INSERT INTO estado (nome) VALUES ('Rio Grande do Sul (RS)');
+INSERT INTO estado (nome) VALUES ('Rondônia (RO)');
+INSERT INTO estado (nome) VALUES ('Roraima (RR)');
+INSERT INTO estado (nome) VALUES ('Santa Catarina (SC)');
+INSERT INTO estado (nome) VALUES ('São Paulo (SP)');
+INSERT INTO estado (nome) VALUES ('Sergipe (SE)');
+INSERT INTO estado (nome) VALUES ('Tocantins (TO)');
+
+INSERT INTO master ( login, senha, cod) VALUES('master','master','2')

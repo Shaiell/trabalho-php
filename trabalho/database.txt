@@ -1,0 +1,132 @@
+// criar database com nome trabalho
+
+
+CREATE TABLE master (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  login VARCHAR(80)  NULL  ,
+  senha VARCHAR(80)  NULL  ,
+  cod INTEGER UNSIGNED  NULL    ,
+PRIMARY KEY(id));
+
+
+
+CREATE TABLE medicamento (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  nome VARCHAR(200)  NULL  ,
+  lote VARCHAR(50)  NULL  ,
+  dtFabricacao DATE  NULL  ,
+  dtValidade DATE  NULL  ,
+  valor DECIMAL(10,2)  NULL  ,
+  imagem VARCHAR(40)  NULL  ,
+  bula VARCHAR(64000)  NULL  ,
+  quantidade INTEGER UNSIGNED  NULL    ,
+PRIMARY KEY(id));
+
+
+
+CREATE TABLE estado (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  nome VARCHAR(50)  NULL    ,
+PRIMARY KEY(id));
+
+
+
+CREATE TABLE vendedor (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  estado_id INTEGER UNSIGNED  NOT NULL  ,
+  nome VARCHAR(200)  NULL  ,
+  email VARCHAR(200)  NULL  ,
+  cpf VARCHAR(18)  NULL  ,
+  rg VARCHAR(18)  NULL  ,
+  idade VARCHAR(3)  NULL  ,
+  endereco VARCHAR(200)  NULL  ,
+  cidade VARCHAR(80)  NULL  ,
+  cep VARCHAR(11)  NULL    ,
+PRIMARY KEY(id)  ,
+INDEX vendedor_FKIndex1(estado_id),
+  FOREIGN KEY(estado_id)
+    REFERENCES estado(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+
+CREATE TABLE medico (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  estado_id INTEGER UNSIGNED  NOT NULL  ,
+  nome VARCHAR(200)  NULL  ,
+  email VARCHAR(200)  NULL  ,
+  cpf VARCHAR(18)  NULL  ,
+  rg VARCHAR(18)  NULL  ,
+  idade VARCHAR(3)  NULL  ,
+  crm VARCHAR(15)  NULL  ,
+  especialidade VARCHAR(200)  NULL  ,
+  endereco VARCHAR(200)  NULL  ,
+  cidade VARCHAR(80)  NULL  ,
+  cep VARCHAR(11)  NULL    ,
+PRIMARY KEY(id)  ,
+INDEX medico_FKIndex1(estado_id),
+  FOREIGN KEY(estado_id)
+    REFERENCES estado(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+
+CREATE TABLE cliente (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  estado_id INTEGER UNSIGNED  NOT NULL  ,
+  nome VARCHAR(200)  NULL  ,
+  email VARCHAR(200)  NULL  ,
+  cpf VARCHAR(18)  NULL  ,
+  rg VARCHAR(18)  NULL  ,
+  idade VARCHAR(3)  NULL  ,
+  endereco VARCHAR(200)  NULL  ,
+  cidade VARCHAR(80)  NULL  ,
+  cep VARCHAR(11)  NULL  ,
+  login VARCHAR(50)  NULL  ,
+  senha VARCHAR(20)  NULL  ,
+  cod INTEGER  NULL    ,
+PRIMARY KEY(id)  ,
+INDEX cliente_FKIndex1(estado_id),
+  FOREIGN KEY(estado_id)
+    REFERENCES estado(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+
+CREATE TABLE pedido (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  cliente_id INTEGER UNSIGNED  NOT NULL  ,
+  valor_total DECIMAL(10,2)  NULL  ,
+  dt_compra DATE  NULL    ,
+PRIMARY KEY(id)  ,
+INDEX pedido_FKIndex1(cliente_id),
+  FOREIGN KEY(cliente_id)
+    REFERENCES cliente(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+
+CREATE TABLE itens (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  pedido_id INTEGER UNSIGNED  NOT NULL  ,
+  medicamento_id INTEGER UNSIGNED  NOT NULL  ,
+  quantidade VARCHAR(3)  NULL  ,
+  valor_produto DECIMAL(10,2)  NULL    ,
+PRIMARY KEY(id)  ,
+INDEX itens_FKIndex1(medicamento_id)  ,
+INDEX itens_FKIndex2(pedido_id),
+  FOREIGN KEY(medicamento_id)
+    REFERENCES medicamento(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(pedido_id)
+    REFERENCES pedido(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+
